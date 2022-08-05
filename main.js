@@ -9,21 +9,21 @@
 // console.log(btns);
 
 //! Получить элементы по class
-// const circles = document.getElementsByClassName('ball');
-// console.log(circles);
+// const balls = document.getElementsByClassName('ball');
+// console.log(balls);
 
 //! Получить элементы по селекторам
 const header = document.querySelector('.header');
 const box = document.querySelector('#box');
 const btns = document.querySelectorAll('button');
-const circles = document.querySelectorAll('.ball');
+const balls = document.querySelectorAll('.ball');
 const ballBlock = document.querySelector('.ball__block');
 const hearts = document.querySelectorAll('.heart');
 
 // console.log(header);
 // console.log(box);
 // console.log(btns);
-// console.log(circles);
+// console.log(balls);
 // console.log(hearts);
 
 //! Получить элемент по селектору
@@ -51,7 +51,7 @@ for (let i = 0; i < btns.length; i++) {
    btns[i].style.backgroundColor = 'blue';
 }
 //? 2. Меняем цвет каждого круга с помощью цикла forEach
-circles.forEach((item) => {
+balls.forEach((item) => {
    // console.log(item);
    item.style.backgroundColor = 'purple';
 });
@@ -76,14 +76,14 @@ ballBlock.append(newBox);
 // document.querySelector('.ball__block').append(newBox);
 
 //? Добавить блок ДО или ПЕРЕД каким то блоком
-// circles[0].before(newBox);
-// circles[0].after(newBox);
+// balls[0].before(newBox);
+// balls[0].after(newBox);
 
 //! Удаляем блок с страницы
 // newBox.remove();
 
 //! Замена блока другим блоком
-// circles[0].replaceWith(box);
+// balls[0].replaceWith(box);
 
 //! Добавляем текст
 // newBox.textContent = 'Hello World!';
@@ -130,9 +130,7 @@ document.querySelector('.dark-theme').style.cssText = `
    margin-bottom: 40px;
    cursor: pointer;
 `; 
-
 darkThemeBtn.textContent = 'dark theme'.toUpperCase();
-
 // btns.forEach((item) => {
 //    item.addEventListener('click', () => {
 //       document.querySelector('.ball__block').innerHTML += newBox;
@@ -160,14 +158,20 @@ document.querySelector('.productInfoDiv').innerHTML = `
 let darkThemeIsActive = false;
 darkThemeBtn.addEventListener('click', () => {
    if (darkThemeIsActive === false) {
+      darkThemeBtn.textContent = 'light theme'.toUpperCase();
       document.body.style.cssText = `background: #333; color: #fff`;
       document.querySelector('.cartLengthInfo').style.cssText = `color: yellow`;
       darkThemeIsActive = !darkThemeIsActive;
       console.log('press!');
    } else {
+      darkThemeBtn.textContent = 'dark theme'.toUpperCase();
       document.body.style.cssText = `background: #fff; color: #000`;
       document.querySelector('.cartLengthInfo').style.cssText = `color: red`;
       darkThemeIsActive = !darkThemeIsActive;
       console.log('press!');
    }
+});
+
+btns.forEach((item) => {
+   item.addEventListener('click', () => document.querySelector('.ball__block').append(newBox.cloneNode(true)));
 });
